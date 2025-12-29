@@ -1,187 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance Humour — Dr. Vikash Varshney</title>
-    <style>body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #050505, #0a0a0a, #111);
-    overflow-x: hidden;
-    color: white;
-}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #050505, #0a0a0a, #111);
+            overflow-x: hidden;
+            color: white;
+        }
 
-/* Floating Finance Icons */
-.floating-icons {
-    position: absolute;
-    top: 10%;
-    left: -5%;
-    font-size: 80px;
-    opacity: 0.06;
-    animation: float 10s infinite alternate ease-in-out;
-}
+        /* Floating Finance Icons */
+        .floating-icons {
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            font-size: 80px;
+            opacity: 0.06;
+            animation: float 10s infinite alternate ease-in-out;
+        }
 
-@keyframes float {
-    0% { transform: translate(0px,0px); }
-    100% { transform: translate(40px,60px); }
-}
+        @keyframes float {
+            0% {
+                transform: translate(0px, 0px);
+            }
 
-.container {
-    text-align: center;
-    padding: 50px 20px;
-}
+            100% {
+                transform: translate(40px, 60px);
+            }
+        }
 
-.heading {
-    font-size: 2.7rem;
-    font-weight: 700;
-    color: #0b76ff;
-    animation: fadeDown 1s ease;
-}
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+        }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: #ddd;
-    margin-bottom: 40px;
-    animation: fadeUp 1s ease;
-}
+        .heading {
+            font-size: 2.7rem;
+            font-weight: 700;
+            color: #0b76ff;
+            animation: fadeDown 1s ease;
+        }
 
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 40px;
+            animation: fadeUp 1s ease;
+        }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
 
-/* JOKE CARDS */
-.joke-card {
-    width: 85%;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
-    transition: 0.3s ease;
-    animation: slideIn 0.8s ease;
-    position: relative;
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.joke-card:hover {
-    transform: translateY(-5px) scale(1.02);
-}
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-/* Neon Borders */
-.neon-blue { border: 2px solid #0b76ff; box-shadow: 0 0 20px #0b76ff; }
-.neon-pink { border: 2px solid #ff4d6d; box-shadow: 0 0 20px #ff4d6d; }
-.neon-gold { border: 2px solid #ffd166; box-shadow: 0 0 20px #ffd166; }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
+        /* JOKE CARDS */
+        .joke-card {
+            width: 85%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: 0.3s ease;
+            animation: slideIn 0.8s ease;
+            position: relative;
+        }
 
-.joke-line {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
+        .joke-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
 
-.reply-line {
-    font-size: 16px;
-    opacity: 0.9;
-}
+        /* Neon Borders */
+        .neon-blue {
+            border: 2px solid #0b76ff;
+            box-shadow: 0 0 20px #0b76ff;
+        }
 
-.emoji {
-    font-size: 40px;
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    cursor: pointer;
-    transition: 0.2s;
-}
+        .neon-pink {
+            border: 2px solid #ff4d6d;
+            box-shadow: 0 0 20px #ff4d6d;
+        }
 
-.emoji:hover {
-    transform: rotate(15deg) scale(1.2);
-}
+        .neon-gold {
+            border: 2px solid #ffd166;
+            box-shadow: 0 0 20px #ffd166;
+        }
 
-/* Reveal Hidden Joke */
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.8);
-}
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
 
-.reveal-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 18px;
-    cursor: pointer;
-    background: #ffd166;
-    border: none;
-    border-radius: 25px;
-    transition: 0.3s;
-    color: #000;
-    font-weight: 600;
-}
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-.reveal-btn:hover {
-    transform: translateY(-3px);
-}
+        .joke-line {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
 
-/* Inside Joke Popup */
-.inside-joke-popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
+        .reply-line {
+            font-size: 16px;
+            opacity: 0.9;
+        }
 
-.popup-box {
-    background: #111;
-    padding: 30px;
-    border-radius: 20px;
-    width: 80%;
-    max-width: 350px;
-    color: #fff;
-    border: 2px solid #0b76ff;
-    box-shadow: 0 0 20px #0b76ff;
-    text-align: center;
-}
+        .emoji {
+            font-size: 40px;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-.close-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #0b76ff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
+        .emoji:hover {
+            transform: rotate(15deg) scale(1.2);
+        }
 
-.next-slide {
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 40px;
-    font-size: 20px;
-    padding: 12px 30px;
-    border-radius: 30px;
-    background: #0b76ff;
-    color: white;
-    transition: 0.3s;
-}
+        /* Reveal Hidden Joke */
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.8);
+        }
 
-.next-slide:hover {
-    background: #005bd1;
-}
-</style>
+        .reveal-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background: #ffd166;
+            border: none;
+            border-radius: 25px;
+            transition: 0.3s;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .reveal-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Inside Joke Popup */
+        .inside-joke-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-box {
+            background: #111;
+            padding: 30px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 350px;
+            color: #fff;
+            border: 2px solid #0b76ff;
+            box-shadow: 0 0 20px #0b76ff;
+            text-align: center;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #0b76ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .next-slide {
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 40px;
+            font-size: 20px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: #0b76ff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .next-slide:hover {
+            background: #005bd1;
+        }
+    </style>
 </head>
 
 <body>
@@ -245,43 +286,44 @@
     <audio id="chimo" src="assets/audio/lofi.mpeg" preload="auto"></audio>
 
     <script>//js/slide3_humour.js
-const chime = document.getElementById("chimo");
-const nextBtn = document.getElementById("nextSlideBtn"); // correct button
+        const chime = document.getElementById("chimo");
+        const nextBtn = document.getElementById("nextSlideBtn"); // correct button
 
-function playChime() {
-    chime.currentTime = 0;  
-    chime.volume = 0.7;     
-    chime.play().catch(err => {
-        console.log("Audio play failed:", err);
-    });
-}
+        function playChime() {
+            chime.currentTime = 0;
+            chime.volume = 0.7;
+            chime.play().catch(err => {
+                console.log("Audio play failed:", err);
+            });
+        }
 
-let musicStarted = false;
+        let musicStarted = false;
 
-document.addEventListener("click", function startMusic() {
-    if (!musicStarted) {
-        chime.volume = 0.7;
-        chime.play().catch(err => console.log("Audio play failed:", err));
-        musicStarted = true;
-    }
-    document.removeEventListener("click", startMusic);
-});
+        document.addEventListener("click", function startMusic() {
+            if (!musicStarted) {
+                chime.volume = 0.7;
+                chime.play().catch(err => console.log("Audio play failed:", err));
+                musicStarted = true;
+            }
+            document.removeEventListener("click", startMusic);
+        });
 
-function revealMore() {
-    const joke = document.getElementById("hiddenJoke");
-    joke.classList.remove("hidden");
-    joke.style.opacity = "1";
-    joke.style.pointerEvents = "all";
-    joke.style.transform = "scale(1)";
-}
+        function revealMore() {
+            const joke = document.getElementById("hiddenJoke");
+            joke.classList.remove("hidden");
+            joke.style.opacity = "1";
+            joke.style.pointerEvents = "all";
+            joke.style.transform = "scale(1)";
+        }
 
-function showInsideJoke() {
-    document.getElementById("insideJokePopup").style.display = "flex";
-}
+        function showInsideJoke() {
+            document.getElementById("insideJokePopup").style.display = "flex";
+        }
 
-function closePopup() {
-    document.getElementById("insideJokePopup").style.display = "none";
-}
-</script>
+        function closePopup() {
+            document.getElementById("insideJokePopup").style.display = "none";
+        }
+    </script>
 </body>
+
 </html>

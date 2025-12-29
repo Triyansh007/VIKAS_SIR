@@ -1,261 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sir’s Emotional Portfolio</title>
-    <style>/* GENERAL */
-body {
-    margin: 0;
-    background: #f3f4f6;
-    font-family: Poppins, sans-serif;
-    overflow-x: hidden;
-}
+    <style>
+        /* GENERAL */
+        body {
+            margin: 0;
+            background: #f3f4f6;
+            font-family: Poppins, sans-serif;
+            overflow-x: hidden;
+        }
 
-/* FLOATING BACKGROUND ICONS */
-.floating-icons {
-    position: absolute;
-    top: 5%;
-    left: -2%;
-    opacity: 0.06;
-    font-size: 70px;
-    animation: floatBG 10s infinite alternate ease-in-out;
-}
-@keyframes floatBG {
-    0% { transform: translate(0,0); }
-    100% { transform: translate(40px,50px); }
-}
+        /* FLOATING BACKGROUND ICONS */
+        .floating-icons {
+            position: absolute;
+            top: 5%;
+            left: -2%;
+            opacity: 0.06;
+            font-size: 70px;
+            animation: floatBG 10s infinite alternate ease-in-out;
+        }
 
-/* HEADER */
-.container {
-    text-align: center;
-    padding: 30px;
-}
+        @keyframes floatBG {
+            0% {
+                transform: translate(0, 0);
+            }
 
-.header-quote {
-    font-size: 2.7rem;
-    font-weight: 800;
-    font-family: 'Montserrat', sans-serif;
-    color: #0b76ff;
-}
+            100% {
+                transform: translate(40px, 50px);
+            }
+        }
 
-#infinity {
-    cursor: pointer;
-    color: #ffd166;
-    transition: 0.3s;
-}
-#infinity:hover {
-    text-shadow: 0 0 20px #ffd166;
-}
+        /* HEADER */
+        .container {
+            text-align: center;
+            padding: 30px;
+        }
 
-/* POPUP (with FIXED Z-INDEX!) */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* FIX */
-}
+        .header-quote {
+            font-size: 2.7rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            color: #0b76ff;
+        }
 
-.popup-box {
-    background: white;
-    padding: 25px;
-    width: 85%;
-    max-width: 350px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    z-index: 10000; /* FIX */
-}
+        #infinity {
+            cursor: pointer;
+            color: #ffd166;
+            transition: 0.3s;
+        }
 
-.popup-box button {
-    padding: 8px 20px;
-    margin-top: 15px;
-    background: #0b76ff;
-    border: none;
-    color: white;
-    border-radius: 8px;
-}
+        #infinity:hover {
+            text-shadow: 0 0 20px #ffd166;
+        }
 
-.hidden {
-    display: none !important;
-}
+        /* POPUP (with FIXED Z-INDEX!) */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            /* FIX */
+        }
 
-/* GRAPH CARD */
-.graph-card {
-    background: white;
-    padding: 25px;
-    margin: 30px auto;
-    width: 90%;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+        .popup-box {
+            background: white;
+            padding: 25px;
+            width: 85%;
+            max-width: 350px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            /* FIX */
+        }
 
-.bar-graph {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    height: 200px;
-    margin-top: 20px;
-}
+        .popup-box button {
+            padding: 8px 20px;
+            margin-top: 15px;
+            background: #0b76ff;
+            border: none;
+            color: white;
+            border-radius: 8px;
+        }
 
-.bar-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .hidden {
+            display: none !important;
+        }
 
-.bar {
-    width: 50px;
-    background: linear-gradient(#0b76ff, #0044aa);
-    border-radius: 10px 10px 0 0;
-    animation: grow 1.6s ease-out forwards;
-    height: 0;
-}
+        /* GRAPH CARD */
+        .graph-card {
+            background: white;
+            padding: 25px;
+            margin: 30px auto;
+            width: 90%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .bar-graph {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 200px;
+            margin-top: 20px;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bar {
+            width: 50px;
+            background: linear-gradient(#0b76ff, #0044aa);
+            border-radius: 10px 10px 0 0;
+            animation: grow 1.6s ease-out forwards;
+            height: 0;
+        }
 
 
-/* Convert percentage to px using graph height (200px) */
-@keyframes grow {
-    from { height: 0; }
-    to { height: calc((var(--height) * 200) / 100); }
-}
+        /* Convert percentage to px using graph height (200px) */
+        @keyframes grow {
+            from {
+                height: 0;
+            }
 
-.bar-label {
-    margin-top: 8px;
-    font-weight: 600;
-    color: #0044aa;
-}
+            to {
+                height: calc((var(--height) * 200) / 100);
+            }
+        }
 
-/* METRICS GRID */
-.metrics-grid {
-    margin-top: 35px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 0 15px;
-}
+        .bar-label {
+            margin-top: 8px;
+            font-weight: 600;
+            color: #0044aa;
+        }
 
-.metric-box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
+        /* METRICS GRID */
+        .metrics-grid {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0 15px;
+        }
 
-.metric-box:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-}
+        .metric-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
 
-.metric-box h3 {
-    color: #0b76ff;
-    font-weight: 700;
-}
+        .metric-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
 
-/* GAUGE CARD */
-.gauge-card {
-    margin-top: 50px;
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-}
+        .metric-box h3 {
+            color: #0b76ff;
+            font-weight: 700;
+        }
 
-.gauge {
-    position: relative;
-    width: 250px;
-    height: 140px;
-    margin: 20px auto;
-}
+        /* GAUGE CARD */
+        .gauge-card {
+            margin-top: 50px;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
 
-.gauge-inner {
-    width: 100%;
-    height: 100%;
-    border-radius: 250px 250px 0 0;
-    background: conic-gradient(
-        #16a34a 0deg,
-        #eab308 180deg,
-        #ffd166 270deg
-    );
-    position: relative;
-}
+        .gauge {
+            position: relative;
+            width: 250px;
+            height: 140px;
+            margin: 20px auto;
+        }
 
-.needle {
-    width: 4px;
-    height: 90px;
-    background: black;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) rotate(-90deg);
-    transform-origin: bottom center;
-    animation: spinNeedle 2.4s ease-out forwards;
-}
+        .gauge-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 250px 250px 0 0;
+            background: conic-gradient(#16a34a 0deg,
+                    #eab308 180deg,
+                    #ffd166 270deg);
+            position: relative;
+        }
 
-@keyframes spinNeedle {
-    from { transform: translateX(-50%) rotate(-90deg); }
-    to { transform: translateX(-50%) rotate(80deg); }
-}
+        .needle {
+            width: 4px;
+            height: 90px;
+            background: black;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(-90deg);
+            transform-origin: bottom center;
+            animation: spinNeedle 2.4s ease-out forwards;
+        }
 
-.gauge-label {
-    font-size: 1.3rem;
-    margin-top: 10px;
-    color: #0b76ff;
-}
+        @keyframes spinNeedle {
+            from {
+                transform: translateX(-50%) rotate(-90deg);
+            }
 
-/* NEXT BUTTON */
-.next {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 12px 30px;
-    background: #0b76ff;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-}
-.bar-graph {
-    display:flex;
-    justify-content:space-around;
-    align-items:flex-end;
-    height:200px;
-    margin-top:20px;
-}
+            to {
+                transform: translateX(-50%) rotate(80deg);
+            }
+        }
 
-.bar-item {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
+        .gauge-label {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            color: #0b76ff;
+        }
 
-.bar {
-    width: 50px;
-    background: linear-gradient(#0b76ff, #0044aa);
-    border-radius: 10px 10px 0 0;
-    height: 0;
-    animation: grow 1.5s ease-out forwards;
-}
+        /* NEXT BUTTON */
+        .next {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background: #0b76ff;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-@keyframes grow {
-    from { height: 0; }
-    to { height: var(--height); }
-}
+        .bar-graph {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 200px;
+            margin-top: 20px;
+        }
 
-.bar-label {
-    margin-top: 8px;
-    font-weight: 600;
-    color: #0044aa;
-}
-</style>
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bar {
+            width: 50px;
+            background: linear-gradient(#0b76ff, #0044aa);
+            border-radius: 10px 10px 0 0;
+            height: 0;
+            animation: grow 1.5s ease-out forwards;
+        }
+
+        @keyframes grow {
+            from {
+                height: 0;
+            }
+
+            to {
+                height: var(--height);
+            }
+        }
+
+        .bar-label {
+            margin-top: 8px;
+            font-weight: 600;
+            color: #0044aa;
+        }
+    </style>
 </head>
 
 <body>
@@ -280,36 +305,36 @@ body {
 
         <!-- GRAPH SECTION -->
         <div class="graph-card">
-    <h2>Respect Growth Over Time 📈</h2>
-    <div class="bar-graph">
+            <h2>Respect Growth Over Time 📈</h2>
+            <div class="bar-graph">
 
-        <div class="bar-item">
-            <div class="bar" style="--height:80px"></div>
-            <span class="bar-label">2021</span>
+                <div class="bar-item">
+                    <div class="bar" style="--height:80px"></div>
+                    <span class="bar-label">2021</span>
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar" style="--height:110px"></div>
+                    <span class="bar-label">2022</span>
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar" style="--height:140px"></div>
+                    <span class="bar-label">2023</span>
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar" style="--height:170px"></div>
+                    <span class="bar-label">2024</span>
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar" style="--height:200px"></div>
+                    <span class="bar-label">2025</span>
+                </div>
+
+            </div>
         </div>
-
-        <div class="bar-item">
-            <div class="bar" style="--height:110px"></div>
-            <span class="bar-label">2022</span>
-        </div>
-
-        <div class="bar-item">
-            <div class="bar" style="--height:140px"></div>
-            <span class="bar-label">2023</span>
-        </div>
-
-        <div class="bar-item">
-            <div class="bar" style="--height:170px"></div>
-            <span class="bar-label">2024</span>
-        </div>
-
-        <div class="bar-item">
-            <div class="bar" style="--height:200px"></div>
-            <span class="bar-label">2025</span>
-        </div>
-
-    </div>
-</div>
 
 
 
@@ -355,39 +380,40 @@ body {
 
     <script>//js/slide5_finance_theme.js
 
-// AUDIO PLAY ON FIRST CLICK ANYWHERE
-const chime = document.getElementById("chime");
+        // AUDIO PLAY ON FIRST CLICK ANYWHERE
+        const chime = document.getElementById("chime");
 
-let musicStarted = false;
+        let musicStarted = false;
 
-function startAudio() {
-    if (musicStarted) return;
-    musicStarted = true;
+        function startAudio() {
+            if (musicStarted) return;
+            musicStarted = true;
 
-    chime.currentTime = 0;
-    chime.volume = 0.6;
-    chime.play().catch(err => {
-        console.log("Audio blocked by browser. Will play on next user gesture.", err);
-    });
+            chime.currentTime = 0;
+            chime.volume = 0.6;
+            chime.play().catch(err => {
+                console.log("Audio blocked by browser. Will play on next user gesture.", err);
+            });
 
-    document.removeEventListener("click", startAudio);
-    document.removeEventListener("touchstart", startAudio);
-}
+            document.removeEventListener("click", startAudio);
+            document.removeEventListener("touchstart", startAudio);
+        }
 
-// Listen for clicks or taps anywhere
-document.addEventListener("click", startAudio);
-document.addEventListener("touchstart", startAudio);
+        // Listen for clicks or taps anywhere
+        document.addEventListener("click", startAudio);
+        document.addEventListener("touchstart", startAudio);
 
 
-// INFINITY POPUP
-document.getElementById("infinity").addEventListener("click", () => {
-    document.getElementById("infinityPopup").classList.remove("hidden");
-});
+        // INFINITY POPUP
+        document.getElementById("infinity").addEventListener("click", () => {
+            document.getElementById("infinityPopup").classList.remove("hidden");
+        });
 
-function closeInfinity() {
-    document.getElementById("infinityPopup").classList.add("hidden");
-}
-</script>
+        function closeInfinity() {
+            document.getElementById("infinityPopup").classList.add("hidden");
+        }
+    </script>
 
 </body>
+
 </html>

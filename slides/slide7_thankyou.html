@@ -1,180 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Thank You</title>
-    <style>body {
-    margin: 0;
-    padding: 0;
-    background: #000;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
-}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Final Thank You — Reveal</title>
 
-/* Center Layout */
-.center-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
 
-/* Handwritten Thank You */
-.signature {
-    font-family: 'Great Vibes', cursive;
-    font-size: 4rem;
-    color: #ffd166;
-    letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(255,209,102,0.9);
-    animation: fadeIn 3s ease forwards;
-    opacity: 0;
-}
+    <style>
+        :root {
+            --accent: #ffd166;
+            --bg: #000;
+            --text: #fff;
+        }
 
-/* Heart pulse */
-.heart {
-    font-size: 2.6rem;
-    margin-top: 20px;
-    color: #ffd166;
-    animation: heartbeat 2s infinite ease-in-out;
-    text-shadow: 0 0 15px rgba(255,209,102,0.7);
-    opacity: 0;
-    animation-delay: 1.5s;
-    animation-fill-mode: forwards;
-}
+        * {
+            box-sizing: border-box
+        }
 
-/* Ending Line */
-.ending-line {
-    margin-top: 35px;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    color: #ffffffd8;
-    opacity: 0;
-    animation: fadeUp 2s ease forwards;
-    animation-delay: 3s;
-}
+        html,
+        body {
+            height: 100%
+        }
 
-/* Animations */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(180deg, #000, #070707);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
 
-@keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(15px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+        .wrap {
+            width: min(980px, 96%);
+            text-align: center;
+        }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.25); }
-    100% { transform: scale(1); }
-}
+        /* Big single button */
+        .reveal-btn {
+            --size: 120px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 28px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(255, 209, 102, 0.15), rgba(255, 209, 102, 0.06));
+            border: 2px solid rgba(255, 209, 102, 0.14);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: transform .18s ease, box-shadow .18s ease, opacity .18s;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+        }
 
-/* Optional automatic fade-out at end */
-.fade-screen {
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: black;
-    opacity: 0;
-    animation: finalFade 6s forwards ease-in-out;
-    pointer-events: none;
-}
+        .reveal-btn:active {
+            transform: translateY(2px) scale(.995)
+        }
 
-@keyframes finalFade {
-    0% { opacity: 0; }
-    90% { opacity: 0; }
-    100% { opacity: 1; }
-}
-</style>
+        .reveal-btn[disabled] {
+            opacity: .45;
+            cursor: default;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.6rem;
+            color: var(--accent);
+            text-shadow: 0 0 22px rgba(255, 209, 102, 0.9);
+            margin-bottom: 18px;
+        }
+
+        /* messages area */
+        .messages {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .msg {
+            transform: translateY(16px);
+            opacity: 0;
+            transition:
+                opacity 600ms ease,
+                transform 600ms cubic-bezier(.22, 1, .36, 1);
+            will-change: opacity, transform;
+        }
+
+
+        .msg.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+
+        .ending {
+            margin-top: 12px;
+            color: #ffffffd8;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width:520px) {
+            .title {
+                font-size: 2.4rem
+            }
+
+            .reveal-btn {
+                font-size: 1rem;
+                padding: 14px 18px
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="center-box">
+    <div class="wrap" role="main" aria-live="polite">
+        <div class="title">Thank You Sir</div>
 
-        <h1 class="signature">Thank You Sir</h1>
+        <!-- Single reveal button -->
+        <div>
+            <button id="revealBtn" class="reveal-btn" aria-pressed="false" aria-label="Press to reveal surprise">
+                ❤ Press to Reveal
+            </button>
+        </div>
 
-        <div class="heart">❤</div>
+        <!-- Messages container (starts empty/invisible) -->
+        <div id="messages" class="messages" aria-hidden="true" tabindex="-1"></div>
 
-        <p class="ending-line">Made with Respect ~ Your MBA 2nd year [2025-26]</p>
-
+        <div class="ending" aria-hidden="true" id="endingLine" style="opacity:0; transition:opacity .8s .6s;">
+            Made with Respect — Your MBA 2nd year [2025–26]
+        </div>
     </div>
 
-    <!-- Optional final fade-out -->
-    <div class="fade-screen"></div>
+    <!-- audio (relative to this file inside slides/ folder) -->
+    <audio id="bgAudio" src="./assets/audio/tada.mpeg" preload="auto"></audio>
 
     <script>
-        // slide7_thankyou.js
+        // One-button reveal + sequential animated messages + start music
+        const revealBtn = document.getElementById('revealBtn');
+        const messagesEl = document.getElementById('messages');
+        const endingLine = document.getElementById('endingLine');
+        const audio = document.getElementById('bgAudio');
 
-// ===== AUDIO =====
-const audio = document.createElement("audio");
-audio.src = "../assets/audio/lofi.mp3"; // your background music
-audio.loop = true;
-audio.volume = 0.5;
+        // The messages to show in order and timing (ms)
+        const sequence = [
+            { text: "Dear Dr. Vikas Varshney —", delay: 400 },
+            { text: "We made this for you with gratitude. Your guidance shaped our thinking, discipline and futures.", delay: 900 },
+            { text: "You taught us clarity, patience, and the courage to make smart decisions.", delay: 900 },
+            { text: "Wishing you endless success, happiness & prosperity. Thank you, Sir.", delay: 1000 }
+        ];
 
-let musicStarted = false;
-function startMusic() {
-    if (musicStarted) return;
-    musicStarted = true;
-    audio.currentTime = 0;
-    audio.play().catch(err => {
-        console.log("Audio blocked by browser, waiting for next user gesture.", err);
-    });
-    document.removeEventListener("click", startMusic);
-    document.removeEventListener("touchstart", startMusic);
-}
+        let revealed = false;
 
-// Listen for any click/tap
-document.addEventListener("click", startMusic);
-document.addEventListener("touchstart", startMusic);
+        async function handleReveal() {
+            if (revealed) return;
+            revealed = true;
 
-// ===== ELEMENT REFERENCES =====
-const signature = document.querySelector(".signature");
-const heart = document.querySelector(".heart");
-const endingLine = document.querySelector(".ending-line");
-const fadeScreen = document.querySelector(".fade-screen");
+            // disable button immediately
+            revealBtn.disabled = true;
+            revealBtn.setAttribute('aria-pressed', 'true');
 
-// ===== SEQUENTIAL ANIMATIONS =====
-function animateFinalSlide() {
-    // Signature fade-in
-    signature.style.opacity = "0";
-    signature.style.transform = "translateY(20px)";
-    signature.style.transition = "all 2.5s ease-out";
-    setTimeout(() => {
-        signature.style.opacity = "1";
-        signature.style.transform = "translateY(0)";
-    }, 500);
+            // small press animation
+            revealBtn.style.transform = 'scale(.98)';
+            setTimeout(() => revealBtn.style.transform = '', 220);
 
-    // Heartbeat fade-in & pulse
-    heart.style.opacity = "0";
-    heart.style.transform = "scale(0.8)";
-    setTimeout(() => {
-        heart.style.opacity = "1";
-        heart.style.animation = "heartbeat 2s infinite ease-in-out";
-    }, 2000);
+            // attempt to play music (user gesture)
+            try {
+                await audio.play();
+            } catch (err) {
+                // some browsers require a gesture; but this is a gesture so usually ok.
+                console.warn('Audio play blocked or failed:', err);
+            }
 
-    // Ending line fade-up
-    endingLine.style.opacity = "0";
-    endingLine.style.transform = "translateY(15px)";
-    setTimeout(() => {
-        endingLine.style.opacity = "1";
-        endingLine.style.transform = "translateY(0)";
-        endingLine.style.transition = "all 2s ease-out";
-    }, 3500);
+            // show messages sequentially
+            messagesEl.setAttribute('aria-hidden', 'false');
+            messagesEl.focus?.();
 
-    // Optional: fade-out screen after 8s
-    setTimeout(() => {
-        fadeScreen.style.opacity = "1";
-        fadeScreen.style.transition = "opacity 3s ease-in-out";
-    }, 8000);
-}
+            let totalDelay = 300; // initial small pause
+            for (let i = 0; i < sequence.length; i++) {
+                const item = sequence[i];
+                totalDelay += item.delay;
 
-// Start animations automatically on page load
-window.addEventListener("load", animateFinalSlide);
+                // schedule each message
+                setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.className = 'msg';
+                    div.innerHTML = `<strong>${item.text.split('—')[0]}</strong>`; // for first splash maybe bold
+                    // If long text, we want full text not just before dash — better to set full:
+                    div.innerHTML = `<div style="font-weight:600;margin-bottom:6px">${i === 0 ? item.text : ''}</div>`;
+                    // For messages after the first, use full paragraph
+                    if (i > 0) {
+                        div.innerHTML = `<p style="margin:0">${item.text}</p>`;
+                    } else {
+                        // first message (title like)
+                        div.innerHTML = `<p style="margin:0;font-weight:700">${item.text}</p>`;
+                    }
+                    messagesEl.appendChild(div);
+                    // force reflow then add .show
+                    messagesEl.appendChild(div);
+
+                    requestAnimationFrame(() => {
+                        div.classList.add('show');
+                    });
+
+                    // on last message, reveal ending line after short pause
+                    if (i === sequence.length - 1) {
+                        setTimeout(() => {
+                            endingLine.style.opacity = '1';
+                        }, 850);
+                    }
+
+                }, totalDelay);
+            }
+
+            // optional: slightly fade out the reveal button after the entire sequence
+            setTimeout(() => {
+                revealBtn.style.opacity = '0';
+                revealBtn.style.transition = 'opacity 900ms ease';
+                setTimeout(() => revealBtn.style.display = 'none', 900);
+            }, totalDelay + 700);
+        }
+
+        // bind click and keyboard (Enter/Space)
+        revealBtn.addEventListener('click', handleReveal);
+        revealBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleReveal(); }
+        });
+
+        // ensure audio is paused/stopped if user leaves
+        window.addEventListener('beforeunload', () => {
+            try { audio.pause(); audio.currentTime = 0; } catch (e) { }
+        });
     </script>
-
 </body>
+
 </html>

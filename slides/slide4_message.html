@@ -1,194 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlock Messages — Dr. Vikash Varshney</title>
-    <style>body {
-    margin: 0;
-    font-family: Poppins, sans-serif;
-    background: linear-gradient(to bottom, #020617, #000);
-    color: #fff;
-    overflow-x: hidden;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+            background: linear-gradient(to bottom, #020617, #000);
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-/* Floating Icons */
-.floating-icons {
-    font-size: 70px;
-    opacity: 0.04;
-    position: absolute;
-    top: 10%;
-    left: -5%;
-    animation: floatIcons 12s infinite alternate ease-in-out;
-}
-@keyframes floatIcons {
-    0% { transform: translate(0,0); }
-    100% { transform: translate(40px,60px); }
-}
+        /* Floating Icons */
+        .floating-icons {
+            font-size: 70px;
+            opacity: 0.04;
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            animation: floatIcons 12s infinite alternate ease-in-out;
+        }
 
-.container {
-    text-align: center;
-    padding: 40px 20px;
-}
+        @keyframes floatIcons {
+            0% {
+                transform: translate(0, 0);
+            }
 
-.heading {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #ffd166;
-}
-.sub { opacity: 0.8; margin-bottom: 40px; }
+            100% {
+                transform: translate(40px, 60px);
+            }
+        }
 
-/* Progress Bar */
-.progress-box {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-.step {
-    width: 40px;
-    height: 40px;
-    background: #222;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #555;
-    font-size: 1.2rem;
-    color: #aaa;
-}
-.step.active {
-    border-color: #ffd166;
-    color: #ffd166;
-}
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-/* Buttons */
-.unlock-btn {
-    width: 80%;
-    max-width: 350px;
-    padding: 15px;
-    margin: 15px auto;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    color: #000;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: 0.3s;
-}
-.glow-gold { background: #ffd166; }
-.glow-blue { background: #0ea5e9; }
-.glow-red { background: #ef4444; }
+        .heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffd166;
+        }
 
-.unlock-btn:hover {
-    transform: translateY(-3px);
-}
-.locked {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
+        .sub {
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
 
-/* Message Cards */
-.message-card {
-    width: 85%;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(7px);
-    box-shadow: 0 0 15px rgba(255,255,255,0.08);
-    animation: fadeIn 0.6s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        /* Progress Bar */
+        .progress-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
 
-.hidden { 
-    display: none !important; /* FIX */
-}
+        .step {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #555;
+            font-size: 1.2rem;
+            color: #aaa;
+        }
 
-/* FINAL BLAST */
-.final-blast {
-    margin-top: 40px;
-    padding: 30px;
-    position: relative;
-    z-index: 1;
-}
-.sir-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 4px solid #ffd166;
-}
-.final-title {
-    margin-top: 20px;
-    font-size: 2rem;
-}
-.final-text {
-    margin-top: 10px;
-    opacity: 0.9;
-    font-size: 1.1rem;
-}
+        .step.active {
+            border-color: #ffd166;
+            color: #ffd166;
+        }
 
-/* Spotlight */
-.spotlight {
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.25), rgba(0,0,0,0.8) 70%);
-    pointer-events: none;
-}
+        /* Buttons */
+        .unlock-btn {
+            width: 80%;
+            max-width: 350px;
+            padding: 15px;
+            margin: 15px auto;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
 
-/* FIXED Inside Joke Popup */
-.joke-popup {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100vw; 
-    height: 100vh;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;  /* ALWAYS ON TOP */
-}
+        .glow-gold {
+            background: #ffd166;
+        }
 
-.popup-content {
-    background: #111;
-    padding: 30px;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 350px;
-    text-align: center;
-    border: 2px solid #0ea5e9;
-    z-index: 100000; /* EXTRA SAFE */
-}
+        .glow-blue {
+            background: #0ea5e9;
+        }
 
-.close-btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #0ea5e9;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-}
+        .glow-red {
+            background: #ef4444;
+        }
 
-/* Next Page */
-.next-page {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 12px 30px;
-    border-radius: 30px;
-    background: #0ea5e9;
-    color: #fff;
-    text-decoration: none;
-}
-</style>
+        .unlock-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .locked {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Message Cards */
+        .message-card {
+            width: 85%;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(7px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+            /* FIX */
+        }
+
+        /* FINAL BLAST */
+        .final-blast {
+            margin-top: 40px;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sir-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #ffd166;
+        }
+
+        .final-title {
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+
+        .final-text {
+            margin-top: 10px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Spotlight */
+        .spotlight {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.8) 70%);
+            pointer-events: none;
+        }
+
+        /* FIXED Inside Joke Popup */
+        .joke-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            /* ALWAYS ON TOP */
+        }
+
+        .popup-content {
+            background: #111;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 350px;
+            text-align: center;
+            border: 2px solid #0ea5e9;
+            z-index: 100000;
+            /* EXTRA SAFE */
+        }
+
+        .close-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #0ea5e9;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Next Page */
+        .next-page {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: #0ea5e9;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -226,16 +265,16 @@
             <h3>Message 1 💙</h3>
             <p>
                 “Sir, Finance ke formulas hum bhool bhi jaaye… <br>
-                par aapka way of teaching kabhi nahi. 
-                #ACTOR,sir thodi si acting hame b seekhni h ”  
+                par aapka way of teaching kabhi nahi.
+                #ACTOR,sir thodi si acting hame b seekhni h ”
             </p>
         </div>
 
         <div id="msg2Card" class="message-card hidden">
             <h3>Message 2 📘</h3>
             <p>
-                “Aap class me enter hote hi vibe b Sharma jaati hai…  
-                discipline + clarity + humour — perfect combo!”  
+                “Aap class me enter hote hi vibe b Sharma jaati hai…
+                discipline + clarity + humour — perfect combo!”
             </p>
         </div>
 
@@ -250,9 +289,9 @@
 
                 <p class="final-text">
                     “You are not just our Finance Sir… <br>
-                    You are our forever mentor,  
-                    our guide,  
-                    and a blessing in our academic journey.”  
+                    You are our forever mentor,
+                    our guide,
+                    and a blessing in our academic journey.”
                     <br><br>
                     Thank you for shaping our mindset, our confidence, and our future.
                 </p>
@@ -266,7 +305,7 @@
             <div class="popup-content">
                 <h3>Inside Joke 🤣</h3>
                 <p>
-                    “Sir’s legendary line:  
+                    “Sir’s legendary line:
                     <b>‘Beta… Degree to ACET kaa parsaad h, aate jaao or lete jaao.’</b> 😂”
                 </p>
                 <button class="close-btn" onclick="closeJoke()">Close</button>
@@ -285,106 +324,107 @@
 
     <script>let unlocked = { m1: false, m2: false };
 
-// AUDIO
-const chime = document.getElementById("chime");
+        // AUDIO
+        const chime = document.getElementById("chime");
 
-// Play audio on ANY click
-document.addEventListener("click", () => {
-    chime.play().catch(() => {});
-}, { once: true });
+        // Play audio on ANY click
+        document.addEventListener("click", () => {
+            chime.play().catch(() => { });
+        }, { once: true });
 
 
-const msg1Btn = document.getElementById("msg1Btn");
-const msg2Btn = document.getElementById("msg2Btn");
-const finalBtn = document.getElementById("finalBtn");
+        const msg1Btn = document.getElementById("msg1Btn");
+        const msg2Btn = document.getElementById("msg2Btn");
+        const finalBtn = document.getElementById("finalBtn");
 
-const msg1Card = document.getElementById("msg1Card");
-const msg2Card = document.getElementById("msg2Card");
-const finalBlast = document.getElementById("finalBlast");
+        const msg1Card = document.getElementById("msg1Card");
+        const msg2Card = document.getElementById("msg2Card");
+        const finalBlast = document.getElementById("finalBlast");
 
-const step1 = document.getElementById("step1");
-const step2 = document.getElementById("step2");
-const step3 = document.getElementById("step3");
+        const step1 = document.getElementById("step1");
+        const step2 = document.getElementById("step2");
+        const step3 = document.getElementById("step3");
 
-/* UNLOCK MESSAGE 1 */
-msg1Btn.addEventListener("click", () => {
-    msg1Card.classList.remove("hidden");
-    unlocked.m1 = true;
-    step1.classList.add("active");
-    msg1Btn.style.opacity = "0.5";
-    checkUnlock();
-});
-
-/* UNLOCK MESSAGE 2 */
-msg2Btn.addEventListener("click", () => {
-    msg2Card.classList.remove("hidden");
-    unlocked.m2 = true;
-    step2.classList.add("active");
-    msg2Btn.style.opacity = "0.5";
-    checkUnlock();
-});
-
-/* CHECK FINAL UNLOCK */
-function checkUnlock() {
-    if (unlocked.m1 && unlocked.m2) {
-        finalBtn.disabled = false;
-        finalBtn.classList.remove("locked");
-        step3.classList.add("active");
-    }
-}
-
-/* FINAL BLAST */
-finalBtn.addEventListener("click", () => {
-    finalBlast.classList.remove("hidden");
-    startConfetti();
-});
-
-/* Inside Joke */
-function showJoke() {
-    document.getElementById("jokePopup").classList.remove("hidden");
-}
-function closeJoke() {
-    document.getElementById("jokePopup").classList.add("hidden");
-}
-
-/* Confetti */
-function startConfetti() {
-    const canvas = document.getElementById("confettiCanvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let confetti = [];
-
-    for (let i = 0; i < 200; i++) {
-        confetti.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-            size: Math.random() * 6 + 2,
-            speed: Math.random() * 3 + 2,
-            color: ["#ffd166", "#0ea5e9", "#fff"][Math.floor(Math.random() * 3)]
+        /* UNLOCK MESSAGE 1 */
+        msg1Btn.addEventListener("click", () => {
+            msg1Card.classList.remove("hidden");
+            unlocked.m1 = true;
+            step1.classList.add("active");
+            msg1Btn.style.opacity = "0.5";
+            checkUnlock();
         });
-    }
 
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        /* UNLOCK MESSAGE 2 */
+        msg2Btn.addEventListener("click", () => {
+            msg2Card.classList.remove("hidden");
+            unlocked.m2 = true;
+            step2.classList.add("active");
+            msg2Btn.style.opacity = "0.5";
+            checkUnlock();
+        });
 
-        confetti.forEach(c => {
-            ctx.fillStyle = c.color;
-            ctx.fillRect(c.x, c.y, c.size, c.size);
-            c.y += c.speed;
-
-            if (c.y > canvas.height) {
-                c.y = -10;
+        /* CHECK FINAL UNLOCK */
+        function checkUnlock() {
+            if (unlocked.m1 && unlocked.m2) {
+                finalBtn.disabled = false;
+                finalBtn.classList.remove("locked");
+                step3.classList.add("active");
             }
+        }
+
+        /* FINAL BLAST */
+        finalBtn.addEventListener("click", () => {
+            finalBlast.classList.remove("hidden");
+            startConfetti();
         });
 
-        requestAnimationFrame(draw);
-    }
+        /* Inside Joke */
+        function showJoke() {
+            document.getElementById("jokePopup").classList.remove("hidden");
+        }
+        function closeJoke() {
+            document.getElementById("jokePopup").classList.add("hidden");
+        }
 
-    draw();
-}
-</script>
+        /* Confetti */
+        function startConfetti() {
+            const canvas = document.getElementById("confettiCanvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let confetti = [];
+
+            for (let i = 0; i < 200; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 6 + 2,
+                    speed: Math.random() * 3 + 2,
+                    color: ["#ffd166", "#0ea5e9", "#fff"][Math.floor(Math.random() * 3)]
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                confetti.forEach(c => {
+                    ctx.fillStyle = c.color;
+                    ctx.fillRect(c.x, c.y, c.size, c.size);
+                    c.y += c.speed;
+
+                    if (c.y > canvas.height) {
+                        c.y = -10;
+                    }
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
+    </script>
 </body>
+
 </html>
