@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Thank You</title>
+    <style>body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Center Layout */
+.center-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Handwritten Thank You */
+.signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #ffd166;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255,209,102,0.9);
+    animation: fadeIn 3s ease forwards;
+    opacity: 0;
+}
+
+/* Heart pulse */
+.heart {
+    font-size: 2.6rem;
+    margin-top: 20px;
+    color: #ffd166;
+    animation: heartbeat 2s infinite ease-in-out;
+    text-shadow: 0 0 15px rgba(255,209,102,0.7);
+    opacity: 0;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+/* Ending Line */
+.ending-line {
+    margin-top: 35px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #ffffffd8;
+    opacity: 0;
+    animation: fadeUp 2s ease forwards;
+    animation-delay: 3s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+/* Optional automatic fade-out at end */
+.fade-screen {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: black;
+    opacity: 0;
+    animation: finalFade 6s forwards ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes finalFade {
+    0% { opacity: 0; }
+    90% { opacity: 0; }
+    100% { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+    <div class="center-box">
+
+        <h1 class="signature">Thank You Sir</h1>
+
+        <div class="heart">❤</div>
+
+        <p class="ending-line">Made with Respect ~ Your MBA 2nd year [2025-26]</p>
+
+    </div>
+
+    <!-- Optional final fade-out -->
+    <div class="fade-screen"></div>
+
+    <script>
+        // slide7_thankyou.js
+
+// ===== AUDIO =====
+const audio = document.createElement("audio");
+audio.src = "../assets/audio/lofi.mp3"; // your background music
+audio.loop = true;
+audio.volume = 0.5;
+
+let musicStarted = false;
+function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+        console.log("Audio blocked by browser, waiting for next user gesture.", err);
+    });
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+}
+
+// Listen for any click/tap
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
+
+// ===== ELEMENT REFERENCES =====
+const signature = document.querySelector(".signature");
+const heart = document.querySelector(".heart");
+const endingLine = document.querySelector(".ending-line");
+const fadeScreen = document.querySelector(".fade-screen");
+
+// ===== SEQUENTIAL ANIMATIONS =====
+function animateFinalSlide() {
+    // Signature fade-in
+    signature.style.opacity = "0";
+    signature.style.transform = "translateY(20px)";
+    signature.style.transition = "all 2.5s ease-out";
+    setTimeout(() => {
+        signature.style.opacity = "1";
+        signature.style.transform = "translateY(0)";
+    }, 500);
+
+    // Heartbeat fade-in & pulse
+    heart.style.opacity = "0";
+    heart.style.transform = "scale(0.8)";
+    setTimeout(() => {
+        heart.style.opacity = "1";
+        heart.style.animation = "heartbeat 2s infinite ease-in-out";
+    }, 2000);
+
+    // Ending line fade-up
+    endingLine.style.opacity = "0";
+    endingLine.style.transform = "translateY(15px)";
+    setTimeout(() => {
+        endingLine.style.opacity = "1";
+        endingLine.style.transform = "translateY(0)";
+        endingLine.style.transition = "all 2s ease-out";
+    }, 3500);
+
+    // Optional: fade-out screen after 8s
+    setTimeout(() => {
+        fadeScreen.style.opacity = "1";
+        fadeScreen.style.transition = "opacity 3s ease-in-out";
+    }, 8000);
+}
+
+// Start animations automatically on page load
+window.addEventListener("load", animateFinalSlide);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute to Dr. Vikash Varshney</title>
+    <style>body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    font-family: Poppins, sans-serif;
+    color: white;
+}
+
+/* SPARKLE RAIN */
+.sparkle-container {
+    position: fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes sparkleDrop {
+    0% { transform: translateY(-10vh); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+.sparkle {
+    position: absolute;
+    top: -10vh;
+    color: #ffd166;
+    font-size: 10px;
+    opacity: 0.8;
+    animation: sparkleDrop linear infinite;
+}
+
+/* CONTENT */
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.title {
+    font-size: 2.6rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    color: #ffd166;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(255,209,102,0.7);
+}
+
+/* TEXT LINES */
+.message-box {
+    width: 85%;
+    margin: auto;
+}
+
+.line {
+    font-size: 1.4rem;
+    opacity: 0;
+    animation: fadeInUp 1.7s forwards;
+    margin-bottom: 14px;
+    font-style: italic;
+}
+.line:nth-child(1) { animation-delay: 0.5s; }
+.line:nth-child(2) { animation-delay: 1.5s; }
+.line:nth-child(3) { animation-delay: 2.5s; }
+.line:nth-child(4) { animation-delay: 3.5s; }
+
+.highlight {
+    margin-top: 40px;
+    font-size: 1.3rem;
+    color: #ffd166;
+    opacity: 0;
+    animation: fadeInGlow 2s forwards;
+    animation-delay: 4.5s;
+    font-family: "Montserrat", sans-serif;
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInGlow {
+    0% { opacity: 0; text-shadow: 0 0 0px #ffd166; }
+    100% { opacity: 1; text-shadow: 0 0 15px #ffd166; }
+}
+
+/* SILHOUETTE */
+.silhouette {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 500px;
+    background: url('/slides/assets/final.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    z-index: 2;
+}
+
+/* NEXT BUTTON */
+.next-btn {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 12px 35px;
+    background: #ffd166;
+    color: black;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(255,209,102,0.6);
+    animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #ffd166; }
+    100% { box-shadow: 0 0 30px #ffd166; }
+}
+
+/* EASTER POPUP */
+.popup {
+    position: fixed;
+    top:0; left:0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display:flex; justify-content:center; align-items:center;
+}
+.popup-box {
+    background: black;
+    border: 2px solid #ffd166;
+    padding: 25px;
+    width: 85%;
+    max-width: 350px;
+    border-radius: 15px;
+    text-align: center;
+    color: #ffd166;
+    box-shadow: 0 0 20px rgba(255,209,102,0.4);
+}
+.popup-box button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #ffd166;
+    color: black;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Easter Zone — invisible clickable area */
+.easter-zone {
+    position: fixed;
+    bottom: 20%;
+    right: 12%;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+    <!-- Golden Sparkle Rain -->
+    <div class="sparkle-container"></div>
+
+    <!-- Content Wrapper -->
+    <div class="content">
+
+        <h1 class="title">A Tribute to Our Mentor</h1>
+
+        <div class="message-box">
+
+            <p class="line">“Sir, you don’t just teach Finance…”</p>
+            <p class="line">“You teach clarity.”</p>
+            <p class="line">“You teach patience.”</p>
+            <p class="line">“You shape our mindset.”</p>
+
+            <p class="highlight">
+                Thank you for guiding us beyond the classroom.  
+                Your impact is lifelong. 🌟
+            </p>
+        </div>
+
+        <!-- Easter Egg -->
+        <div id="easterPopup" class="popup hidden">
+            <div class="popup-box">
+                <h3>💙 Small Truth</h3>
+                <p>“Sir’s mindset = Our compass.”</p>
+                <button onclick="closeEgg()">Close</button>
+            </div>
+        </div>
+
+        <!-- Hover-trigger zone -->
+        <div class="easter-zone" onclick="revealEgg()"></div>
+
+        <a href="slide7_thankyou.html" class="next-btn">Final Page →</a>
+
+    </div>
+
+    <!-- Silhouette -->
+    <div class="silhouette"></div>
+
+    <audio id="nop" src="assets/audio/fida.mpeg" preload="auto" loop></audio>
+
+    <script>//js/slide6_tribute.js
+    
+const lofi = document.getElementById("nop");
+let musicStarted = false;
+
+function startLofi() {
+    if (musicStarted) return;
+    musicStarted = true;
+
+    lofi.currentTime = 0;
+    lofi.volume = 0.6;
+    lofi.play().catch(err => {
+        console.log("Audio blocked by browser. Will play on next user gesture.", err);
+    });
+
+    document.removeEventListener("click", startLofi);
+    document.removeEventListener("touchstart", startLofi);
+}
+
+// Listen for clicks or taps anywhere on the page
+document.addEventListener("click", startLofi);
+document.addEventListener("touchstart", startLofi);
+
+// SPARKLE RAIN GENERATION
+const container = document.querySelector(".sparkle-container");
+
+for (let i = 0; i < 50; i++) {
+    let spark = document.createElement("div");
+    spark.classList.add("sparkle");
+    spark.innerHTML = "✨";
+    spark.style.left = Math.random() * 100 + "vw";
+    spark.style.animationDuration = (3 + Math.random() * 4) + "s";
+    spark.style.fontSize = (8 + Math.random() * 10) + "px";
+    container.appendChild(spark);
+}
+
+// Easter Egg
+function revealEgg() {
+    document.getElementById("easterPopup").classList.remove("hidden");
+}
+
+function closeEgg() {
+    document.getElementById("easterPopup").classList.add("hidden");
+}
+</script>
+</body>
+</html>

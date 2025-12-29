@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Quest – Dr. Vikash Varshney</title>
+
+    <!-- External CSS -->
+    <style>
+        /*css/style.css*/
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f5f7ff;
+            color: #222;
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+
+        .primary-btn {
+            padding: 12px 28px;
+            background: #0b76ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background: #095ccc;
+        }
+
+        /* Fade Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.2s forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-2 {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Landing */
+        #landing {
+            height: 100vh;
+            background: linear-gradient(135deg, #0b76ff, #ffd166);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .landing-inner h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .landing-inner p {
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+
+
+        /* Greeting Page */
+        #greeting {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #0b76ff;
+            margin-bottom: 20px;
+        }
+
+        .photo-frame img {
+            width: 220px;
+            height: 220px;
+            border-radius: 15px;
+            border: 5px solid #0b76ff;
+            object-fit: cover;
+        }
+
+        .big-wish {
+            margin: 20px auto;
+            font-size: 1.2rem;
+            max-width: 350px;
+        }
+
+        .sub-heading {
+            margin-top: 20px;
+            font-size: 1.4rem;
+            color: #ff9800;
+        }
+
+        .jokes {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .jokes li {
+            padding: 8px 0;
+        }
+
+
+        /* Message Wall */
+        .message-wall {
+            margin-top: 20px;
+            background: #e7f1ff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-wall p {
+            margin: 6px 0;
+        }
+
+
+        /* Hunt Section */
+        #hunt {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .unlock-btn {
+            padding: 12px 25px;
+            margin: 15px 0;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #ff9800;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .locked {
+            background: #9e9e9e !important;
+            cursor: not-allowed;
+        }
+
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            width: 85%;
+            max-width: 380px;
+        }
+
+        #closeModal {
+            float: right;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+
+        /* Final Section */
+        #finalSection {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .final-title {
+            font-size: 2rem;
+            color: #0b76ff;
+        }
+
+        .final-text {
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+    </style>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Landing Section -->
+    <section id="landing">
+        <div class="landing-inner">
+            <h1 class="fade-in">Welcome Dr. Vikas Varshney</h1>
+            <p class="fade-in delay-1">Your Birthday Quest Begins...</p>
+            <button id="startBtn" class="primary-btn fade-in delay-2">Start Journey 🎉</button>
+        </div>
+    </section>
+
+    <!-- Greeting Section -->
+    <section id="greeting" class="hidden">
+        <h2 class="section-title">Happy Birthday Sir 🎂</h2>
+
+        <div class="photo-frame">
+            <img id="sirPhoto" src="./slides/assets/sir.jpg" alt="Sir">
+        </div>
+
+        <p class="big-wish">
+            🎉 Happy Birthday, <b>Dr. Vikas Varshney</b> 🎉<br>
+            The guiding light of Finance,<br>
+            and the wisdom behind every smart decision!
+        </p>
+
+        <h3 class="sub-heading">College Moments – Finance Edition 😎</h3>
+
+        <ul class="jokes">
+            <li>“Sir ke formulas simple lagte hai… par exam me magic!” 💸</li>
+            <li>“Assignment: proper format → Hum: Chat GPT at 11:59 PM 😭”</li>
+            <li>“Sir class enter → Finance mode ON, Masti mode OFF 😌”</li>
+        </ul>
+
+        <div class="message-wall">
+            <h3>Messages From Students 💙</h3>
+            <p>Thank you Sir, for shaping our perspective in Finance.</p>
+            <p>Your classes inspire clarity and confidence.</p>
+            <p>You bring excellence with simplicity.</p>
+            <p>You are truly the backbone of our financial wisdom.</p>
+        </div>
+
+        <button id="beginHuntBtn" class="primary-btn">Begin Surprise Hunt →</button>
+    </section>
+
+    <!-- Hunt Section -->
+    <section id="hunt" class="hidden">
+        <h2 class="section-title">Unlock Your Birthday Messages 🔐</h2>
+
+        <div class="hunt-buttons">
+            <button id="msg1Btn" class="unlock-btn">Unlock Message 1</button>
+            <button id="msg2Btn" class="unlock-btn">Unlock Message 2</button>
+            <button id="finalBtn" class="unlock-btn locked" disabled>Final Surprise</button>
+        </div>
+    </section>
+
+    <!-- Final Surprise Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <!-- Final Section -->
+    <section id="finalSection" class="hidden">
+        <h2 class="final-title">🎉 HAPPY BIRTHDAY SIR 🎉</h2>
+
+        <p class="final-text">
+            You have taught us much more than Finance.<br>
+            You taught us clarity… discipline… smart decisions…<br>
+            and how to build a strong foundation in life.<br><br>
+
+            Thank you, Sir.<br>
+            We admire your knowledge & your humble nature.<br>
+            Wishing you endless success, happiness & prosperity! 💙<br><br>
+
+            <b>— From your students, with respect & gratitude.</b>
+        </p>
+
+        <!-- Continue Button -->
+        <div style="margin-top: 30px;">
+            <a href="../slides/slide1_intro.html" class="primary-btn">Continue →</a>
+        </div>
+
+    </section>
+    <audio id="fida" src="./slides/assets/audio/fidaa.mpeg" preload="auto" loop></audio>
+
+    <!-- External JS -->
+    <script>//js/main.js
+        const lofi = document.getElementById("fida");
+        let musicStarted = false;
+
+        function startLofi() {
+            if (musicStarted) return;
+            musicStarted = true;
+
+            lofi.currentTime = 0;
+            lofi.volume = 0.6;
+            lofi.play().catch(err => {
+                console.log("Audio blocked by browser. Will play on next user gesture.", err);
+            });
+
+            document.removeEventListener("click", startLofi);
+            document.removeEventListener("touchstart", startLofi);
+        }
+
+        // Listen for clicks or taps anywhere on the page
+        document.addEventListener("click", startLofi);
+        document.addEventListener("touchstart", startLofi);
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const landing = document.getElementById("landing");
+            const greeting = document.getElementById("greeting");
+            const hunt = document.getElementById("hunt");
+            const finalSection = document.getElementById("finalSection");
+
+            const startBtn = document.getElementById("startBtn");
+            const beginHuntBtn = document.getElementById("beginHuntBtn");
+
+            const msg1Btn = document.getElementById("msg1Btn");
+            const msg2Btn = document.getElementById("msg2Btn");
+            const finalBtn = document.getElementById("finalBtn");
+
+            const modal = document.getElementById("modal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalMessage = document.getElementById("modalMessage");
+            const closeModal = document.getElementById("closeModal");
+
+            let unlocked = { m1: false, m2: false };
+
+
+            // Start Button
+            startBtn.addEventListener("click", () => {
+                landing.classList.add("hidden");
+                greeting.classList.remove("hidden");
+            });
+
+
+            // Begin Hunt
+            beginHuntBtn.addEventListener("click", () => {
+                greeting.classList.add("hidden");
+                hunt.classList.remove("hidden");
+            });
+
+
+            // Unlock Message 1
+            msg1Btn.addEventListener("click", () => {
+                unlocked.m1 = true;
+                modalTitle.innerText = "Message 1";
+                modalMessage.innerHTML = `
+            Sir, aapke bina semester incomplete lagta hai.<br>
+            You make Finance simple, logical & powerful.<br>
+            Thank you for guiding us! 💙
+        `;
+                modal.classList.remove("hidden");
+                msg1Btn.style.background = "#4CAF50";
+                checkUnlock();
+            });
+
+
+            // Unlock Message 2
+            msg2Btn.addEventListener("click", () => {
+                unlocked.m2 = true;
+                modalTitle.innerText = "Message 2";
+                modalMessage.innerHTML = `
+            Flashback to first class:<br>
+            Sab dare hue the 😆<br>
+            But then we realised —<br>
+            You’re the coolest and smartest Finance mentor! 📘💼
+        `;
+                modal.classList.remove("hidden");
+                msg2Btn.style.background = "#4CAF50";
+                checkUnlock();
+            });
+
+
+            // Enable Final Button
+            function checkUnlock() {
+                if (unlocked.m1 && unlocked.m2) {
+                    finalBtn.disabled = false;
+                    finalBtn.classList.remove("locked");
+                }
+            }
+
+            // Final Surprise
+            finalBtn.addEventListener("click", () => {
+                modalTitle.innerText = "Final Surprise 🎉";
+                modalMessage.innerHTML = `
+            Happy Birthday Dr. Vikas Varshney!<br><br>
+            You are an inspiration — in wisdom, discipline, & humility.<br>
+            Thank you for shaping us as students AND individuals.<br><br>
+            Wishing you success, joy and prosperity always! 💙🎂💼
+            sir, shadi m bulana mat bhuliyega
+        `;
+                modal.classList.remove("hidden");
+                // Show final birthday message section
+                document.getElementById("finalSection").classList.remove("hidden");
+
+                setTimeout(() => {
+                    hunt.classList.add("hidden");
+                    finalSection.classList.remove("hidden");
+                }, 2500);
+            });
+
+
+            // Close Modal
+            closeModal.addEventListener("click", () => {
+                modal.classList.add("hidden");
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

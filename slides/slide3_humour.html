@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Humour — Dr. Vikash Varshney</title>
+    <style>body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #050505, #0a0a0a, #111);
+    overflow-x: hidden;
+    color: white;
+}
+
+/* Floating Finance Icons */
+.floating-icons {
+    position: absolute;
+    top: 10%;
+    left: -5%;
+    font-size: 80px;
+    opacity: 0.06;
+    animation: float 10s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translate(0px,0px); }
+    100% { transform: translate(40px,60px); }
+}
+
+.container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.heading {
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: #0b76ff;
+    animation: fadeDown 1s ease;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 40px;
+    animation: fadeUp 1s ease;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* JOKE CARDS */
+.joke-card {
+    width: 85%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    transition: 0.3s ease;
+    animation: slideIn 0.8s ease;
+    position: relative;
+}
+
+.joke-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Neon Borders */
+.neon-blue { border: 2px solid #0b76ff; box-shadow: 0 0 20px #0b76ff; }
+.neon-pink { border: 2px solid #ff4d6d; box-shadow: 0 0 20px #ff4d6d; }
+.neon-gold { border: 2px solid #ffd166; box-shadow: 0 0 20px #ffd166; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.joke-line {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.reply-line {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.emoji {
+    font-size: 40px;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.emoji:hover {
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Reveal Hidden Joke */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+}
+
+.reveal-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background: #ffd166;
+    border: none;
+    border-radius: 25px;
+    transition: 0.3s;
+    color: #000;
+    font-weight: 600;
+}
+
+.reveal-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Inside Joke Popup */
+.inside-joke-popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 350px;
+    color: #fff;
+    border: 2px solid #0b76ff;
+    box-shadow: 0 0 20px #0b76ff;
+    text-align: center;
+}
+
+.close-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #0b76ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.next-slide {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    background: #0b76ff;
+    color: white;
+    transition: 0.3s;
+}
+
+.next-slide:hover {
+    background: #005bd1;
+}
+</style>
+</head>
+
+<body>
+
+    <!-- FLOATING FINANCE ICONS -->
+    <div class="floating-icons">₹ 📊 📉 💼 📈 ₹ 📈</div>
+
+    <div class="container">
+
+        <h1 class="heading">Finance Jokes For The LEGEND 😂💼</h1>
+        <p class="subtitle">“Sir, balance sheet se zyada balance hum aapse seekhe hain.”</p>
+
+        <!-- JOKE CARDS -->
+        <div class="joke-card neon-blue">
+            <div class="joke-line">
+                <b>Sir:</b> “Beta, depreciation ka matlab simple hai…”
+            </div>
+            <div class="reply-line">
+                <i>Student: “Sir toh simple bolte hain, par life me sabse complex yahi lagta hai 🥲📉”</i>
+            </div>
+            <div class="emoji" onclick="showInsideJoke()">😂</div>
+        </div>
+
+        <div class="joke-card neon-pink">
+            <div class="joke-line">
+                <b>Sir:</b> “Is chapter me bas logic samajhna hai.”
+            </div>
+            <div class="reply-line">
+                <i>Student: “Sir, logic dhoondhte dhoondhte calculator bhi garam ho gaya 🔥😂”</i>
+            </div>
+            <div class="emoji" onclick="showInsideJoke()">😭</div>
+        </div>
+
+        <div class="joke-card neon-gold hidden" id="hiddenJoke">
+            <div class="joke-line">
+                <b>Sir:</b> “Beta, ye toh obvious hai!”
+            </div>
+            <div class="reply-line">
+                <i>Student: “Sir, hume toh lag rha hai ye NASA ka entrance exam hai 🚀😂”</i>
+            </div>
+            <div class="emoji" onclick="showInsideJoke()">🤯</div>
+        </div>
+
+        <!-- BUTTON TO REVEAL HIDDEN JOKE -->
+        <button class="reveal-btn" onclick="revealMore()">Got More Jokes? 🤣</button>
+
+        <!-- INSIDE JOKE POPUP -->
+        <div class="inside-joke-popup" id="insideJokePopup">
+            <div class="popup-box">
+                <h3>😂 Inside Joke</h3>
+                <p>“Sir ka iconic line: <br> <b>‘Isme kya tough hai? Yeh toh obvious hai!’</b>”</p>
+                <button class="close-btn" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+
+        <!-- NEXT BUTTON -->
+        <a href="slide4_message.html" id="nextSlideBtn" class="next-slide">Next Surprise →</a>
+
+    </div>
+
+    <audio id="chimo" src="assets/audio/lofi.mpeg" preload="auto"></audio>
+
+    <script>//js/slide3_humour.js
+const chime = document.getElementById("chimo");
+const nextBtn = document.getElementById("nextSlideBtn"); // correct button
+
+function playChime() {
+    chime.currentTime = 0;  
+    chime.volume = 0.7;     
+    chime.play().catch(err => {
+        console.log("Audio play failed:", err);
+    });
+}
+
+let musicStarted = false;
+
+document.addEventListener("click", function startMusic() {
+    if (!musicStarted) {
+        chime.volume = 0.7;
+        chime.play().catch(err => console.log("Audio play failed:", err));
+        musicStarted = true;
+    }
+    document.removeEventListener("click", startMusic);
+});
+
+function revealMore() {
+    const joke = document.getElementById("hiddenJoke");
+    joke.classList.remove("hidden");
+    joke.style.opacity = "1";
+    joke.style.pointerEvents = "all";
+    joke.style.transform = "scale(1)";
+}
+
+function showInsideJoke() {
+    document.getElementById("insideJokePopup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("insideJokePopup").style.display = "none";
+}
+</script>
+</body>
+</html>
